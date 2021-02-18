@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/instance: nginx-ingress-controller
+    app.kubernetes.io/version: nginx-0.35.0-rancher2
+  name: ingress-nginx-controller-int
+  namespace: ingress-nginx
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: https
+  selector:
+    app.kubernetes.io/name: ingress-nginx-int
+    app.kubernetes.io/instance: ingress-nginx-int
+    app.kubernetes.io/component: controller

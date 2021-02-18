@@ -37,6 +37,8 @@ spec:
         - --tcp-services-configmap=$(POD_NAMESPACE)/tcp-services
         - --udp-services-configmap=$(POD_NAMESPACE)/udp-services
         - --annotations-prefix=nginx.ingress.kubernetes.io
+        - --http-port=8080
+        - --https-port=8443
         env:
         - name: POD_NAME
           valueFrom:
@@ -62,11 +64,11 @@ spec:
           timeoutSeconds: 1
         name: nginx-ingress-controller
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           hostPort: 8080
           name: http
           protocol: TCP
-        - containerPort: 443
+        - containerPort: 8443
           hostPort: 8443
           name: https
           protocol: TCP

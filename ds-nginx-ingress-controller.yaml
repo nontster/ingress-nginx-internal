@@ -91,6 +91,7 @@ spec:
           runAsUser: 101
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+      hostNetwork: true  
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
